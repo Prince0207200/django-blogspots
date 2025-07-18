@@ -1,37 +1,43 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
-from cloudinary.models import CloudinaryField  # ✅ Import this
+from cloudinary.models import CloudinaryField
 
-now = datetime.now()
-time = now.strftime("%d %B %Y")
 
 class Post(models.Model):
     postname = models.CharField(max_length=600)
     category = models.CharField(max_length=600)
 
-    # ✅ Replace ImageField with CloudinaryField
+    # ✅ Cloudinary image field
     image = CloudinaryField('image', blank=True, null=True)
 
-    content = models.CharField(max_length=100000)
-    time = models.CharField(default=time, max_length=100, blank=True)
-    likes = models.IntegerField(null=True, blank=True, default=0)
+    content = models.TextField(max_length=100000)
+
+    # ✅ Automatically store creation time
+    time = models.DateTimeField(auto_now_add=True)
+
+    likes = models.IntegerField(default=0, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.postname)
+        return f"{self.postname}"
+
 
 class Comment(models.Model):
     content = models.CharField(max_length=200)
-    time = models.CharField(default=time, max_length=100, blank=True)
+    time = models.DateTimeField(auto_now_add=True)
+
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.id}.{self.content[:20]}..."
+        return f"#{self.id} | {self.content[:30]}"
+
 
 class Contact(models.Model):
     name = models.CharField(max_length=600)
     email = models.EmailField(max_length=600)
     subject = models.CharField(max_length=1000)
-    message = models.CharField(max_length=10000, blank=True)
+    message = models.TextField(max_length=10000, blank=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.subject[:30]}"
