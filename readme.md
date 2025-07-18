@@ -6,7 +6,7 @@
 A Blog application in Django contains all the features of a Blog site like login/register into the system, add blog post with title, description and image and edit or delete the blog post.
 
 
-  <a href="https://django-blogspot.onrender.com//"><strong>➥ Live Demo</strong></a>
+  <a href="https://django-blogspot.onrender.com/"><strong>➥ Live Demo</strong></a>
 
 </div>
 
@@ -41,9 +41,9 @@ Creating A Blog In Django has interactive UI design using which users can see wh
 ## 🚀 Setup/Installation Requirements
 
 To view the website, 
-* click [Python Django Blog Website](https://github.com/Prince0207200/django-blogspot)
+* click [Python Django Blog Website](https://github.com/Prince0207200/django-blogspots)
 or 
-* copy the link https://github.com/Prince0207200/django-blogspot.git paste it to your browser and load it.  
+* copy the link https://github.com/Prince0207200/django-blogspots.git paste it to your browser and load it.  
 
 ## 🛠 Built With
 
